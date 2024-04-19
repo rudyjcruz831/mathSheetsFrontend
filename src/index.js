@@ -5,6 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import { BrowserRouter } from 'react-router-dom';
 
+// Add the script tag for Google API Client Library here
+const script = document.createElement('script');
+script.src = 'https://apis.google.com/js/api.js';
+document.head.appendChild(script);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

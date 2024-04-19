@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+## My Notes
+
+This how to install google aouth
+```bash
+npm install @react-oauth/google@latest
+```
+
+Added bootstrap to react app 
+```bash
+npm install react-bootstrap bootstrap
+```

@@ -9,11 +9,18 @@ import RegisterPage from './components/pages/RegisterPage'
 import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
 import HomePage from './components/pages/HomePage'
 
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
+
 import './App.css';
+
+const google_client_id = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+
 
 function App() {
   return (
-    <Router>
+    <GoogleOAuthProvider clientId={google_client_id}>
+      <Router>
         <Routes>
             <Route exact path="/" element={ <LandingPage/> } />
             <Route path="/login" element={ <LoginPage/> } />
@@ -23,6 +30,7 @@ function App() {
         </Routes>
         <Footer />
     </Router>
+    </GoogleOAuthProvider>
   );
 }
 
