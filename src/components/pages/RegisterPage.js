@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios'; // Import Axios library for making HTTP requests
-
-import {} from 'react-bootstrap'
 
 import '../../App.css'
 
@@ -19,15 +20,10 @@ export default function SignUpPage() {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
 
-        // if (password !== repassword){
-            
-        //     return 
-        // }
-
-        console.log(username, email, password)
+        console.log(username, email, password, first_name, last_name);
+        
         try {
             // Make POST request to your API endpoint with registration data
-            // TODO: Change the url to be dynamic to send to the post
             const response = await axios.post('http://localhost:50052/api/mathsheets/user/signup', {
                 username,
                 email,
@@ -47,50 +43,65 @@ export default function SignUpPage() {
     return (
         <div className="text-center m-5-auto">
             <h2>Join us</h2>
-            <h5>Create your personal account</h5>
+            <h5 style={{color:"#712c9c"}}>Create your personal account</h5>
 
+            <Form onSubmit={handleSubmit}>
+                <InputGroup className="mb-3">
+                    <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+                    <Form.Control
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </InputGroup>
 
+                <InputGroup className="mb-3">
+                    <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
+                    <Form.Control
+                        placeholder="Email address"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </InputGroup>
 
+                <InputGroup className="mb-3">
+                    <Form.Control
+                        placeholder="Password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </InputGroup>
 
-            <form onSubmit={handleSubmit}>
-                <p>
-                    <label>Username</label><br/>
-                    <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-                </p>
-                <p>
-                    <label>Email address</label><br/>
-                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                </p>
-                <p>
-                    <label>Password</label><br/>
-                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                </p>
-                <p>
-                    <label>First Name</label><br/>
-                    <input type="text" name="firstName" value={first_name} onChange={(e) => setFirstName(e.target.value)} required />
-                </p>
-                <p>
-                    <label>Last Name</label><br/>
-                    <input type="text" name="lastName" value={last_name} onChange={(e) => setLastName(e.target.value)} required />
-                </p>
-                <p>
-                    <input type="checkbox" name="checkbox" id="checkbox" required /> <span>I agree all statements in <a href="https://google.com" target="_blank" rel="noopener noreferrer">terms of service</a></span>.
-                </p>
-                <p>
-                    <button id="sub_btn" type="submit">Register</button>
-                </p>
-            </form>
+                <InputGroup className="mb-3">
+                    <Form.Control
+                        placeholder="First Name"
+                        value={first_name}
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
+                </InputGroup>
 
-           
+                <InputGroup className="mb-3">
+                    <Form.Control
+                        placeholder="Last Name"
+                        value={last_name}
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
+                </InputGroup>
 
+                <Form.Check
+                    type="checkbox"
+                    label="I agree all statements in terms of service"
+                    required
+                />
 
-
-
+                <Button style={{paddingTop:"10px"}} id="sub_btn" type="submit">Register</Button>
+            </Form>
 
             <footer>
                 <p><Link to="/">Back to Homepage</Link>.</p>
             </footer>
         </div>
-    )
-
+    );
 }

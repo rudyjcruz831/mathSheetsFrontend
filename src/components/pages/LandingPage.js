@@ -1,5 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+import NavbarMath from '../navbar'
+
 
 import '../../App.css'
 // import BackgroundImage from '../../assets/bg.png'
@@ -7,18 +13,18 @@ import '../../App.css'
 
 function LandingPage(){
     return (
-        <header style={ HeaderStyle }>
-            <h1 className="main-title text-center">login / register page</h1>
-            <p className="main-para text-center">join us now and don't waste time</p>
-            <div className="buttons text-center">
-                <Link to="/login">
-                    <button className="primary-button">log in</button>
-                </Link>
-                <Link to="/register">
-                    <button className="primary-button" id="reg_btn"><span>register </span></button>
-                </Link>
-            </div>
-        </header>
+        <Container fluid>
+            <Row>
+                <Col className="text-center text-md-right">
+                    <p style={{color:"#712c9c", paddingTop:"20px"}}>This a sample of the PDF we can create using chatGPT OpenAI API</p>
+                </Col>
+            </Row>
+            <Row>
+                <Col className="text-center text-md-right">
+                    <iframe style={{width:"800px", height:"800px"}} src='assets/mathworksheet.pdf'></iframe>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
