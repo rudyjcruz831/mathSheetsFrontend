@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
@@ -9,6 +9,7 @@ import '../../App.css'
 
 export default function SignUpPage() {
 
+    const navigate = useNavigate(); // Get navigate function from useNavigate hook
     // State variables to store form input values
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -33,7 +34,20 @@ export default function SignUpPage() {
             });
 
             // Handle response from API (e.g., show success message, redirect to homepage)
-            console.log(response.data); // Log response data to console
+            // console.log(response.data); // Log response data to console
+            if (response.status === 201) {
+                // console.log(response.data.TokenID)
+                // localStorage.setItem('jwt', response.data.TokenID)
+                const token = response.data.tokens.idToken;
+                const refresh_token = response.data.tokens.refreshToken;
+                localStorage.setItem('idToken', token);
+                localStorage.setItem('refresh_token', refresh_token);
+                navigate('/home');
+            } else {
+                console.log("Error: ", response.data);
+                navigate('/login')
+            }
+
         } catch (error) {
             // Handle errors (e.g., display error message)
             console.error('Error:', error);

@@ -16,7 +16,7 @@ function LandingPage(){
         <Container fluid>
             <Row>
                 <Col className="text-center text-md-right">
-                    <p style={{color:"#712c9c", paddingTop:"20px"}}>This a sample of the PDF we can create using chatGPT OpenAI API</p>
+                    <p style={{color:"#712c9c", paddingTop:"20px"}}>This is a sample of the a PDF we can create using chatGPT OpenAI API</p>
                 </Col>
             </Row>
             <Row>

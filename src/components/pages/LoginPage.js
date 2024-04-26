@@ -21,8 +21,15 @@ export default function SignInPage() {
             });
 
             if (response.status === 200) {
+                // console.log(response.data.TokenID)
+                // localStorage.setItem('jwt', response.data.TokenID)
+                const token = response.data.tokens.idToken;
+                const refresh_token = response.data.tokens.refreshToken;
+                localStorage.setItem('idToken', token);
+                localStorage.setItem('refresh_token', refresh_token);
                 navigate('/home');
             } else {
+                // navigate('/login');
                 setErrorMessage('Failed to sign in. Please check your credentials.');
             }
         } catch (error) {
@@ -73,3 +80,6 @@ export default function SignInPage() {
         </div>
     );
 }
+
+
+
